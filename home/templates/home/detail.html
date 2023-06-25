@@ -1,0 +1,200 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
+
+	<!-- title -->
+	<title>Single Product</title>
+
+	<!-- favicon -->
+	<link rel="shortcut icon" type="image/png" href="{%static 'home/assets/img/favicon.png'%}">
+	<!-- google font -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+	<!-- fontawesome -->
+	<link rel="stylesheet" href="{%static 'home/assets/css/all.min.css'%}">
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="{%static 'home/assets/bootstrap/css/bootstrap.min.css'%}">
+	<!-- owl carousel -->
+	<link rel="stylesheet" href="{%static 'home/assets/css/owl.carousel.css'%}">
+	<!-- magnific popup -->
+	<link rel="stylesheet" href="{%static 'home/assets/css/magnific-popup.css'%}">
+	<!-- animate css -->
+	<link rel="stylesheet" href="{%static 'home/assets/css/animate.css'%}">
+	<!-- mean menu css -->
+	<link rel="stylesheet" href="{%static 'home/assets/css/meanmenu.min.css'%}">
+	<!-- main style -->
+	<link rel="stylesheet" href="{%static 'home/assets/css/main.css'%}">
+	<!-- responsive -->
+	<link rel="stylesheet" href="{%static 'home/assets/css/responsive.css'%}">
+{% endblock %}
+
+{% block body %}
+
+    <!--PreLoader-->
+    <div class="loader">
+        <div class="loader-inner">
+            <div class="circle"></div>
+        </div>
+    </div>
+    <!--PreLoader Ends-->
+
+    <!-- header -->
+	<div class="top-header-area" id="sticker">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-sm-12 text-center">
+					<div class="main-menu-wrap">
+
+
+						<!-- menu start -->
+						<nav class="main-menu">
+							<ul>
+								<li class="current-list-item"><a href="{% url 'home:home' %}">Home</a>
+								</li>
+								<li><a href="{% url 'home:about'%}">About</a></li>
+								<li><a href="#">Categories</a>
+									<ul class="sub-menu">
+										{% for i in category %}
+                                            <li>
+                                                <a href="{% url 'home:category' i.id %}">{{ i.name }}</a>
+                                            </li>
+                                        {% endfor %}
+									</ul>
+								</li>
+								<li><a href="{% url 'home:contact'%}">Contact</a></li>
+                                <li></li>
+							</ul>
+						</nav>
+						<!-- menu end -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end header -->
+    <!-- breadcrumb-section -->
+	<div class="breadcrumb-section breadcrumb-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="breadcrumb-text">
+						<p>See more Details</p>
+						<h1>Single Product</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end breadcrumb section -->
+    <!-- single product -->
+	<div class="single-product mt-150 mb-150">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-5">
+					<div class="single-product-img">
+						<img src="{{ product.image.url }}" alt="">
+					</div>
+				</div>
+				<div class="col-md-7">
+					<div class="single-product-content">
+						<h3>{{ product.name }}</h3>
+						<p class="single-product-pricing"><span>{{ product.weight }}</span> {{ product.total_price }}T</p>
+						<p class="single-product-info">{{ product.information }}</p>
+						<div class="single-product-form">
+							<p><strong>Categories: </strong>{{ product.category }}</p>
+						</div>
+						<h4>Share:</h4>
+						<ul class="product-share">
+                            <li><a href="tg://msg_url?url={{request.path}}"><i class="fab fa-telegram"></i></a></li>
+							<li><a href="whatsapp://send?text={{request.path}}" data-action="share/whatsapp/share" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end single product -->
+    <!-- footer -->
+	<div class="footer-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-box about-widget">
+						<h2 class="widget-title">About us</h2>
+						<p>Ut enim ad minim veniam perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.</p>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-box get-in-touch">
+						<h2 class="widget-title">Get in Touch</h2>
+						<ul>
+							<li>Mashhad, Iran.</li>
+							<li>sth@gmail.com</li>
+							<li>+98 930 069 3834</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end footer -->
+    <!-- copyright -->
+	<div class="copyright">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-12">
+					<p>Copyrights &copy; 2022 - <a href="#">Ryan Zarif</a> , All Rights Reserved.</p>
+				</div>
+				<div class="col-lg-6 text-right col-md-12">
+					<div class="social-icons">
+						<ul>
+							<li><a href="https://wa.me/989300693834" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+							<li><a href="https://instagram.com/viv.products?utm_medium=copy_link" target="_blank"><i class="fab fa-instagram"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+    <!-- end copyright -->
+
+    <!-- jquery -->
+	<script src="{% static 'home/assets/js/jquery-1.11.3.min.js'%}"></script>
+	<!-- bootstrap -->
+	<script src="{% static 'home/assets/bootstrap/js/bootstrap.min.js'%}"></script>
+	<!-- count down -->
+	<script src="{% static 'home/assets/js/jquery.countdown.js'%}"></script>
+	<!-- isotope -->
+	<script src="{% static 'home/assets/js/jquery.isotope-3.0.6.min.js'%}"></script>
+	<!-- waypoints -->
+	<script src="{% static 'home/assets/js/waypoints.js'%}"></script>
+	<!-- owl carousel -->
+	<script src="{% static 'home/assets/js/owl.carousel.min.js'%}"></script>
+	<!-- magnific popup -->
+	<script src="{% static 'home/assets/js/jquery.magnific-popup.min.js'%}"></script>
+	<!-- mean menu -->
+	<script src="{% static 'home/assets/js/jquery.meanmenu.min.js'%}"></script>
+	<!-- sticker js -->
+	<script src="{% static 'home/assets/js/sticker.js'%}"></script>
+	<!-- main js -->
+	<script src="{% static 'home/assets/js/main.js'%}"></script>
+
+{% endblock  %}
+
+
+
+
+
+
+
+
+
+
+
+{% comment %}
+    <h4>{{ product.name }}</h4>
+    <img style="width: 250px" src="{{ product.image.url }}" alt=""><br>
+    <pre>{{ product.information }}</pre>{% endcomment %}
